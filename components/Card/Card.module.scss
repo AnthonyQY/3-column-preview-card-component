@@ -1,0 +1,121 @@
+$bright-orange: hsl(31, 77%, 52%);
+$dark-cyan: hsl(184, 100%, 22%);
+$very-dark-cyan: hsl(179, 100%, 13%);
+$transparent-white: hsla(0, 0%, 100%, 0.75);
+$very-light-gray: hsl(0, 0%, 95%);
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  background-color: transparent;
+
+  color: white;
+
+  max-width: 20rem;
+}
+
+@mixin block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 3rem;
+  max-width: 100%;
+}
+
+.block__sedan {
+  @include block;
+  background-color: $bright-orange;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.block__suvs {
+  @include block;
+  background-color: $dark-cyan;
+}
+
+.block__luxury {
+  @include block;
+  background-color: $very-dark-cyan;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.title {
+  font-family: "Big Shoulders Display", cursive;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: $very-light-gray;
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.75;
+  color: $transparent-white;
+}
+
+.image {
+  display: block;
+  max-width: 4rem;
+}
+
+.title {
+  margin: 0;
+}
+
+.description {
+  margin: 0;
+}
+
+@mixin button__learn($color) {
+  display: block;
+  color: $color;
+  background-color: white;
+  border: 2px solid transparent;
+  border-radius: 3rem;
+  padding: 1rem;
+  max-width: 9rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+}
+
+.button__learn__sedan {
+  @include button__learn($bright-orange);
+}
+
+.button__learn__suv {
+  @include button__learn($dark-cyan);
+}
+
+.button__learn__luxury {
+  @include button__learn($very-dark-cyan);
+}
+
+@media (min-width: 60em) {
+  .container {
+    flex-direction: row;
+
+    max-width: 57rem;
+  }
+
+  .block__sedan {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  .block__luxury {
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+  }
+
+  .description {
+    margin-bottom: 3rem;
+  }
+}
